@@ -5,8 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuizGenerator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        ResizeMode="NoResize"
+        Title="QuizGenerator" Height="450" Width="800"
+        Background="#222022">
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#222022"/>
+            <Setter Property="Foreground" Value="#f3bc44"/>
+            <Setter Property="FontFamily" Value="Arial Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#f3bc44"/>
+
+
+        </Style>
+    </Window.Resources>
+    
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Image Grid.Column="1" Grid.Row="0" Source="quizLogo.png" Margin="3"/>
+
+        <TextBox Grid.Column="1" Grid.Row="1" Margin="40,35,40,35" Text="Quiz Name" FontSize="22" GotFocus="textBoxGotFocus" Background="LightGray" BorderBrush="Black" BorderThickness="1" TextAlignment="Center"/>
+
+        <Button Grid.Column="1" Grid.Row="2" Margin="80, 30, 80, 30" Content="Create" FontSize="30" Click="createButton_Click"/>
+
+        <Button Grid.Column="0" Grid.Row="3" Margin="20, 30, 20, 30" Content="Open recent" FontSize="20"/>
+
     </Grid>
 </Window>
+ 
