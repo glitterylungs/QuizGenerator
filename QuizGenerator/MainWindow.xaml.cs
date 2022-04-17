@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace QuizGenerator
 {
@@ -34,9 +35,25 @@ namespace QuizGenerator
 
         private void createButton_Click(object sender, RoutedEventArgs e)
         {
-            SubWindow subWindow = new SubWindow();
-            Close();
-            subWindow.Show();
+            string quizName = quizNameTextBox.Text;
+            string content = "Quiz Name";
+            MessageBox.Show(quizName);
+            if ( quizName != content || quizName != "")
+            {
+                SubWindow subWindow = new SubWindow();
+                Close();
+                subWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show("Enterr Quiz Name");
+            }
+        }
+
+        private void openFile_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true) ;
         }
     }
 }
