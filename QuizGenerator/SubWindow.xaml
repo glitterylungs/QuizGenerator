@@ -32,27 +32,27 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Text="QuizName" FontFamily="Arial Black" Foreground="#f3bc44" HorizontalAlignment="Center" Margin="0,10,0,0" FontSize="20"/>
+        <TextBlock x:Name="quizName" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" FontFamily="Arial Black" Text="" Foreground="#f3bc44" HorizontalAlignment="Center" Margin="0,10,0,0" FontSize="20"/>
 
-        <TextBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Background="LightGray" Margin="50,30,50,30"/>
+        <local:TextBoxWithErrorProvider x:Name="question" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Margin="50,30,50,30"/>
 
         <CheckBox Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" Margin="30,0,50,0" Background="#222022" BorderBrush="#f3bc44">
-            <TextBox Width="300" Background="LightGray"/>
+            <local:TextBoxWithErrorProvider x:Name="answerOne" Width="300"/>
         </CheckBox>
 
         <CheckBox Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" Margin="30,0,50,0" Background="#222022" BorderBrush="#f3bc44">
-            <TextBox Width="300" Background="LightGray"/>
+            <local:TextBoxWithErrorProvider x:Name="answerTwo" Width="300"/>
         </CheckBox>
 
         <CheckBox Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" Margin="30,0,50,0" Background="#222022" BorderBrush="#f3bc44">
-            <TextBox Width="300" Background="LightGray"/>
+            <local:TextBoxWithErrorProvider x:Name="answerThree" Width="300"/>
         </CheckBox>
 
         <CheckBox Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3" Margin="30,0,50,0" Background="#222022" BorderBrush="#f3bc44">
-            <TextBox Width="300" Background="LightGray"/>
+            <local:TextBoxWithErrorProvider x:Name="answerFour" Width="300"/>
         </CheckBox>
 
-        <Button Grid.Column="0" Grid.Row="6" Content="Add" FontFamily="Arial Black" Foreground="#f3bc44" Background="#222022"/>
+        <Button Name="addButton" Grid.Column="0" Grid.Row="6" Content="Add" FontFamily="Arial Black" Foreground="#f3bc44" Background="#222022" Click="addButtonClick"/>
 
         <Button Grid.Column="1" Grid.Row="6" Content="Modify" FontFamily="Arial Black" Foreground="#f3bc44" Background="#222022"/>
 

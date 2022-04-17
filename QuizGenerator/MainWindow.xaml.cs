@@ -26,6 +26,8 @@ namespace QuizGenerator
             InitializeComponent();
         }
 
+
+
         public void textBoxGotFocus(object sender, RoutedEventArgs e) //usuwanie label po kliknieciu w textbox
         {
             TextBox tb = (TextBox)sender;
@@ -37,16 +39,16 @@ namespace QuizGenerator
         {
             string quizName = quizNameTextBox.Text;
             string content = "Quiz Name";
-            MessageBox.Show(quizName);
-            if ( quizName != content || quizName != "")
+            if ( quizName == content || quizName == "")
             {
-                SubWindow subWindow = new SubWindow();
-                Close();
-                subWindow.Show();
+                MessageBox.Show("Enter Quiz Name");
+                
             }
             else
             {
-                MessageBox.Show("Enterr Quiz Name");
+                SubWindow subWindow = new SubWindow(quizNameTextBox.Text);
+                Close();
+                subWindow.Show();
             }
         }
 
