@@ -34,21 +34,21 @@
 
         <TextBlock x:Name="quizName" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" FontFamily="Arial Black" Text="" Foreground="#f3bc44" HorizontalAlignment="Center" Margin="0,10,0,0" FontSize="20"/>
 
-        <local:TextBoxWithErrorProvider x:Name="question" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Margin="50,30,50,30"/>
+        <local:TextBoxWithErrorProvider x:Name="questionTextBox" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Margin="50,30,50,30"/>
 
-        <CheckBox Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" Margin="30,0,50,0" Background="#222022" BorderBrush="#f3bc44">
+        <CheckBox x:Name="answerOneCorrect" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" Margin="30,0,50,0" Background="#222022" BorderBrush="#f3bc44">
             <local:TextBoxWithErrorProvider x:Name="answerOne" Width="300"/>
         </CheckBox>
 
-        <CheckBox Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" Margin="30,0,50,0" Background="#222022" BorderBrush="#f3bc44">
+        <CheckBox x:Name="answerTwoCorrect" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" Margin="30,0,50,0" Background="#222022" BorderBrush="#f3bc44">
             <local:TextBoxWithErrorProvider x:Name="answerTwo" Width="300"/>
         </CheckBox>
 
-        <CheckBox Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" Margin="30,0,50,0" Background="#222022" BorderBrush="#f3bc44">
+        <CheckBox x:Name="answerThreeCorrect" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" Margin="30,0,50,0" Background="#222022" BorderBrush="#f3bc44">
             <local:TextBoxWithErrorProvider x:Name="answerThree" Width="300"/>
         </CheckBox>
 
-        <CheckBox Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3" Margin="30,0,50,0" Background="#222022" BorderBrush="#f3bc44">
+        <CheckBox x:Name="answerFourCorrect" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3" Margin="30,0,50,0" Background="#222022" BorderBrush="#f3bc44">
             <local:TextBoxWithErrorProvider x:Name="answerFour" Width="300"/>
         </CheckBox>
 
@@ -58,11 +58,7 @@
 
         <Button Grid.Column="2" Grid.Row="6" Content="Delete" FontFamily="Arial Black" Foreground="#f3bc44" Background="#222022"/>
 
-        <ListBox Grid.Column="3" Grid.Row="0" Grid.RowSpan="7" Margin="30" Background="LightGray">
-            <ListBoxItem Content="Question nr 1"/>
-            <ListBoxItem Content="Question nr 2"/>
-            <ListBoxItem Content="Question nr 3"/>
-        </ListBox>
+        <ListBox x:Name="listBox" Grid.Column="3" Grid.Row="0" Grid.RowSpan="7" Margin="30" Background="LightGray"/>
 
     </Grid>
 </Window>

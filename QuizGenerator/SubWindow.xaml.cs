@@ -43,9 +43,41 @@ namespace QuizGenerator
 
         private void addButtonClick(object sender, RoutedEventArgs e)
         {
-            if(isNoEmpty(question) & isNoEmpty(answerOne) & isNoEmpty(answerTwo) & isNoEmpty(answerThree) & isNoEmpty(answerFour))
+            if(isNoEmpty(questionTextBox) & isNoEmpty(answerOne) & isNoEmpty(answerTwo) & isNoEmpty(answerThree) & isNoEmpty(answerFour))
             {
-                MessageBox.Show("wypelnione");
+                List<string> correct = new List<string>();
+
+                if (answerOneCorrect.IsChecked == true)
+                {
+                    correct.Add(answerOne.Text);
+                }
+                if (answerTwoCorrect.IsChecked == true)
+                {
+                    correct.Add(answerTwo.Text);
+                }
+                if (answerThreeCorrect.IsChecked == true)
+                {
+                    correct.Add(answerThree.Text);
+                }
+                if (answerFourCorrect.IsChecked == true)
+                {
+                    correct.Add(answerFour.Text);
+                }
+
+                Question question = new Question(questionTextBox.Text, answerOne.Text, answerTwo.Text, answerThree.Text, answerFour.Text, correct);
+
+                listBox.Items.Add(question);
+                listBox.SelectedItem = null;
+
+                questionTextBox.Text = "";
+                answerOne.Text = "";
+                answerTwo.Text = "";
+                answerThree.Text = "";
+                answerFour.Text = "";
+                answerOneCorrect.IsChecked = false;
+                answerThreeCorrect.IsChecked = false;
+                answerThreeCorrect.IsChecked = false;
+                answerFourCorrect.IsChecked = false;
             }
         }
     }
