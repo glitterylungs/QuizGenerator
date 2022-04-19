@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
+using System.IO;
+using System.Text.Json;
 
 namespace QuizGenerator
 {
@@ -37,25 +39,55 @@ namespace QuizGenerator
 
         private void createButton_Click(object sender, RoutedEventArgs e)
         {
-            string quizName = quizNameTextBox.Text;
-            string content = "Quiz Name";
-            if ( quizName == content || quizName == "")
+            try
             {
-                MessageBox.Show("Enter Quiz Name");
-                
+                string quizName = quizNameTextBox.Text;
+                string content = "Quiz Name";
+                if (quizName == content || quizName == "")
+                {
+                    MessageBox.Show("Enter Quiz Name");
+
+                }
+                else
+                {
+                    SubWindow subWindow = new SubWindow(quizNameTextBox.Text);
+                    Close();
+                    subWindow.Show();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                SubWindow subWindow = new SubWindow(quizNameTextBox.Text);
-                Close();
-                subWindow.Show();
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void openFile_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            if (openFileDialog.ShowDialog() == true) ;
+            try
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    // ścieżka do pliku
+                    string filename = null;
+                    filename = openFileDialog.FileName;
+                    filename = filename.Replace("\\", "/");
+                    MessageBox.Show(filename);
+
+                    // nazwa pliku --> nazwa quizu
+                    string name = null;
+                    name = System.IO.Path.GetFileNameWithoutExtension(filename);
+                    MessageBox.Show(name);
+                    
+                    SubWindow subWindow = new SubWindow(name, filename);
+                    Close();
+                    subWindow.Show();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

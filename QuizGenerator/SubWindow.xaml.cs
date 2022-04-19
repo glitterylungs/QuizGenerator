@@ -21,6 +21,8 @@ namespace QuizGenerator
     /// </summary>
     public partial class SubWindow : Window
     {
+        private string pathName { get; set; }
+
         public SubWindow()
         {
             TextBoxWithErrorProvider.BrushForAll = Brushes.Red;
@@ -31,6 +33,18 @@ namespace QuizGenerator
         public SubWindow(string quizNameText) : this()
         {
             quizName.Text = quizNameText;
+        }
+
+        // konstruktor by przekazac nazwe quizu oraz liste pytan z deserializacji
+        public SubWindow(string quizNameText, string pathName) : this()
+        {
+            quizName.Text = quizNameText;
+            this.pathName = File.ReadAllText(pathName);
+            List<Question> questionList = JsonSerializer.Deserialize<List<Question>>(this.pathName);
+            foreach(Question question in questionList)
+            {
+                listBox.Items.Add(question);
+            }
         }
 
         // obsluga przycisku Add
