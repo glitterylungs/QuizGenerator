@@ -65,7 +65,9 @@
 
         <Button Grid.Column="2" Grid.Row="6" Content="Delete" FontFamily="Arial Black" Foreground="#f3bc44" Background="#222022" Click="deleteButtonClick"/>
 
-        <ListBox x:Name="listBox" Grid.Column="3" Grid.Row="0" Grid.RowSpan="7" Margin="30" Background="LightGray" SelectionChanged="listBoxSelectionChanged"/>
+        <ListBox x:Name="listBox" Grid.Column="3" Grid.Row="0" Grid.RowSpan="7" Margin="30,30,30,50" Background="LightGray" SelectionChanged="listBoxSelectionChanged"/>
+
+        <Button Grid.Column="3" Grid.Row="6" Margin="150,28,150,12" Content="Save" FontFamily="Arial Black" Foreground="#f3bc44" Background="#222022" Click="saveButtonClick"/>
 
     </Grid>
 </Window>

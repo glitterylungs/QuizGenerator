@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Text.Json;
+using System.IO;
 
 namespace QuizGenerator
 {
@@ -219,6 +221,36 @@ namespace QuizGenerator
             }
             tb.SetError("");
             return true;
+        }
+
+        private void saveButtonClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string fileName = $"C:/Users/ja/Desktop/Ala/Quizy/{quizName.Text}.json";
+
+                if (File.Exists(fileName))
+                {
+                    File.Delete(fileName);
+                }
+
+                List<Question> questionList = new List<Question>();
+
+                foreach (Question question in listBox.Items)
+                {
+                    questionList.Add(question);
+                }
+                var jsonString = JsonSerializer.Serialize(questionList);
+                File.WriteAllText(fileName, jsonString);
+                MessageBox.Show("Zapisano");
+                MainWindow mainWindow = new MainWindow();
+                Close();
+                mainWindow.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
