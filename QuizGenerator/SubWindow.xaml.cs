@@ -22,6 +22,7 @@ namespace QuizGenerator
     public partial class SubWindow : Window
     {
         private string pathName { get; set; }
+        private Cesar cesar = new Cesar();
 
         public SubWindow()
         {
@@ -40,7 +41,7 @@ namespace QuizGenerator
         {
             quizName.Text = quizNameText;
             this.pathName = File.ReadAllText(pathName);
-            List<Question> questionList = JsonSerializer.Deserialize<List<Question>>(this.pathName);
+            List<Question> questionList = JsonSerializer.Deserialize<List<Question>>(cesar.decryption(this.pathName));
             foreach(Question question in questionList)
             {
                 listBox.Items.Add(question);
@@ -255,7 +256,7 @@ namespace QuizGenerator
                     questionList.Add(question);
                 }
                 var jsonString = JsonSerializer.Serialize(questionList);
-                File.WriteAllText(fileName, jsonString);
+                File.WriteAllText(fileName, cesar.encryption(jsonString));
                 MessageBox.Show("Zapisano");
                 MainWindow mainWindow = new MainWindow();
                 Close();
